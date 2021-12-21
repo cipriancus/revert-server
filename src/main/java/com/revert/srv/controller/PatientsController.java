@@ -20,7 +20,7 @@ public class PatientsController {
     }
 
     @PostMapping
-    public Boolean getLivingStatusForPatient(@RequestBody PatientDTO patientDTO){
+    public String getLivingStatusForPatient(@RequestBody PatientDTO patientDTO){
         return patientsService.getLivingStatusForPatient(patientDTO);
     }
 }

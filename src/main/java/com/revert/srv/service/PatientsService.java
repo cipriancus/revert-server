@@ -2,13 +2,13 @@ package com.revert.srv.service;
 
 import com.revert.srv.dto.PatientDTO;
 import org.springframework.stereotype.Service;
-
-import java.util.Random;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class PatientsService {
-    public Boolean getLivingStatusForPatient(PatientDTO patientDTO){
-        Random rd = new Random();
-        return rd.nextBoolean();
-    }
+  public String getLivingStatusForPatient(PatientDTO patientDTO) {
+    RestTemplate restTemplate = new RestTemplate();
+    return restTemplate.postForObject("https://revert-server-ml.herokuapp.com/", patientDTO, String.class);
+    //http://192.168.1.18:5000/
+  }
 }
